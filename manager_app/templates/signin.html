@@ -2,5 +2,30 @@
 
 
 {% block content %}
-<p>Sign In!</p>
+    <h2>Sign In</h2>
+    {% for message in form.username.errors %}
+        <div class="">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.password.errors %}
+        <div class="">{{ message }}</div>
+    {% endfor %}
+    <form action="{{ url_for('signin') }}" method=post>
+
+        <div class="">
+{#            {{ form.username.label }}#}
+{#            {{ form.username }}#}
+        </div>
+
+        <div class="">
+{#            {{ form.password.label }}#}
+{#            {{ form.password }}#}
+        </div>
+
+        <div class="">
+            <input id="submit" class="" name="submit" type="submit"
+                   value="Sign In">
+        </div>
+
+    </form>
 {% endblock %}

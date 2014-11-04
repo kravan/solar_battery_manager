@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from manager_app.forms import RegistrationForm
+from manager_app.forms import RegistrationForm, SigninForm
 
 app = Flask(__name__)
 app.secret_key = 'development key'
@@ -12,10 +12,11 @@ def index():
         return "Error - " + str(e)
 
 
-@app.route('/signin')
+@app.route('/signin', methods=['GET', 'POST'])
 def sign_in():
     try:
-        return render_template('signin.html')
+        form = SigninForm()
+        return render_template('signin.html', form=form)
     except Exception as e:
         return "Error - " + str(e)
 
