@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    <h2>Add new user</h2>
+
+    {% for message in form.first_name.errors %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.last_name.errors %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.username.errors %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.password.errors %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    <form action="{{ url_for('users') }}" method=post>
+
+        {{ form.hidden_tag() }}
+        <div class="">
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+        </div>
+        <div class="">
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+        </div>
+        <div class="">
+            {{ form.username.label }}
+            {{ form.username }}
+        </div>
+        <div class="">
+            {{ form.password.label }}
+            {{ form.password }}
+        </div>
+        <div class="">
+            {{ form.is_admin.label }}
+            {{ form.is_admin }}
+        </div>
+
+        <div class="">
+            <input id="submit" class="" name="submit" type="submit" value="Add new user">
+        </div>
+
+    </form>
+
+
+{% endblock %}
