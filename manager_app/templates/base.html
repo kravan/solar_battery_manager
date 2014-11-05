@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
 <title>Power Manager</title>
-
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 <body>
 <header>
-    <a href="{{ url_for('index') }}" class="">Home</a>
-    <a href="{{ url_for('sign_in') }}" class="">Sign In</a>
-    <a href="{{ url_for('users') }}" class="">Users</a>
+    <div class="menu">
+        <div class="button select">
+            <a href="{{ url_for('index') }}" class="">Home</a>
+        </div>
+        <div class="button">
+            <a href="{{ url_for('sign_in') }}" class="">Sign In</a>
+        </div>
+        <div class="button">
+            <a href="{{ url_for('users') }}" class="">Users</a>
+        </div>
+    </div>
+    <div class="clear-fix"></div>
 </header>
 
 {% block content %}
