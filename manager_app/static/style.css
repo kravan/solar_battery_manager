@@ -24,6 +24,7 @@ header {
     height: 30px;
     background-color: #008000;
     background: url('img/noise-green.png') repeat scroll 0 0 transparent;
+    /**/
 }
 .menu{
     float: right;
