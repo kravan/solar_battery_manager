@@ -10,7 +10,7 @@
     {% for message in form.password.errors %}
         <div class="">{{ message }}</div>
     {% endfor %}
-    <form action="{{ url_for('sign_in') }}" method=post>
+    <form action="{{ url_for('sign_in') }}" method=post class="sign_in">
 
         <div class="">
             {{ form.username.label }}
