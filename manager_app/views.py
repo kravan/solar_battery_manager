@@ -74,21 +74,24 @@ def users():
     try:
         user = User.query.filter(User.username == session.get('username')).first()
         form = RegistrationForm()
-        if request.method == 'POST':
-            if not form.validate():
-                return render_template('users.html', form=form)
-            else:
-                new_user = User(
-                    form.first_name.data,
-                    form.last_name.data,
-                    form.username.data,
-                    form.password.data,
-                    form.is_admin.data,
-                )
-                db.session.add(new_user)
-                db.session.commit()
-                return redirect('/')
-        return render_template('users.html', form=form, request_user=user)
+        if user.is_admin:
+            if request.method == 'POST':
+                if not form.validate():
+                    return render_template('users.html', form=form)
+                else:
+                    new_user = User(
+                        form.first_name.data,
+                        form.last_name.data,
+                        form.username.data,
+                        form.password.data,
+                        form.is_admin.data,
+                    )
+                    db.session.add(new_user)
+                    db.session.commit()
+                    return redirect('/')
+            return render_template('users.html', form=form, request_user=user)
+        else:
+            return "Login please as administrator"
     except Exception as e:
         return "Error - " + str(e)
 
