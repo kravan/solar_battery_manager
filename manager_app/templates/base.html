@@ -6,15 +6,23 @@
 <body>
 <header>
     <div class="menu">
-        <div class="button select">
-            <a href="{{ url_for('index') }}" class="">Home</a>
-        </div>
-        <div class="button">
-            <a href="{{ url_for('sign_in') }}" class="">Sign In</a>
-        </div>
-        <div class="button">
-            <a href="{{ url_for('users') }}" class="">Users</a>
-        </div>
+        {% if 'username' in session %}
+            <div class="button select">
+                <a href="{{ url_for('index') }}" class="">Home</a>
+            </div>
+            {% if request_user.is_admin %}
+                <div class="button">
+                    <a href="{{ url_for('users') }}" class="">Users</a>
+                </div>
+            {% endif %}
+            <div class="button">
+                <a href="{{ url_for('sign_out') }}" class="">Sign Out</a>
+            </div>
+        {% else %}
+            <div class="button">
+                <a href="{{ url_for('sign_in') }}" class="">Sign In</a>
+            </div>
+        {% endif %}
     </div>
     <div class="clear-fix"></div>
 </header>
