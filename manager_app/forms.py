@@ -1,4 +1,4 @@
-__author__ = 'andrii.kravets'
+__author__ = 'kravets.andr@gmailcom'
 
 from flask.ext.wtf import Form
 from wtforms import validators
