@@ -21,7 +21,7 @@
         <div class="flash box">{{ message }}</div>
     {% endfor %}
 
-    <form action="{{ url_for('users') }}" method=post class="add_users">
+    <form action="{{ url_for('users') }}" method=post class="add_users box">
 
         {{ form.hidden_tag() }}
         <div class="">
